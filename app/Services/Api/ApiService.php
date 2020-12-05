@@ -23,10 +23,10 @@ class ApiService
     {
         return [
             'api_key'     => $this->apiKey,
-            'language'    => $this->language,
-            'page'        => $params->page ?? $this->page,
-            'sort_by'     => $params->sort_by ?? $this->sort_by,
-            'with_genres' => $params->with_genres ?? null
+            'language'    => $params['language'] ?? $this->language,
+            'page'        => $params['page'] ?? $this->page,
+            'sort_by'     => $params['sort_by'] ?? $this->sort_by,
+            'with_genres' => $params['with_genres'] ?? null
         ];
     }
 

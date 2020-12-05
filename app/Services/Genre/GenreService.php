@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Services\Trending;
+namespace App\Services\Genre;
 
 use Illuminate\Support\Facades\Http;
 use Exception;
 
-use App\Contracts\TrendingInterface;
+use App\Contracts\GenreInterface;
 use App\Services\Api\ApiService;
 
-class TrendingService extends ApiService implements TrendingInterface
+class GenreService extends ApiService implements GenreInterface
 {
 
-    public function getTrending($media_type, $time_window, $query)
+    public function getGenreMovieList($query)
     {
         try {
 
-            $response = Http::get("{$this->baseUrl}/trending/{$media_type}/{$time_window}",
+            $response = Http::get("{$this->baseUrl}/genre/movie/list",
                                     $this->handleQueryParams($query)
                                 );
 
