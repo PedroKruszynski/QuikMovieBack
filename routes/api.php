@@ -20,6 +20,9 @@ Route::prefix('quikmovie')->middleware(['checkApi'])->group(function () {
     Route::prefix('genre')->namespace('Genre')->group(function () {
         Route::get('movie',   'GenreController@getGenreMovieList');
     });
+    Route::prefix('movie')->namespace('Movie')->group(function () {
+        Route::get('{movie_id}',   'MovieController@getMovieDetails');
+    });
 });
 
 Route::fallback(function () {
