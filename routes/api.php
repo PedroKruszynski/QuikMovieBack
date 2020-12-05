@@ -26,6 +26,9 @@ Route::prefix('quikmovie')->middleware(['checkApi'])->group(function () {
     Route::prefix('discover')->namespace('Discover')->group(function () {
         Route::get('movie',   'DiscoverController@getDiscoverMovie');
     });
+    Route::prefix('search')->namespace('Search')->group(function () {
+        Route::get('movie',   'SearchController@getSearchMovie');
+    });
 });
 
 Route::fallback(function () {
