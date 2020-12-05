@@ -16,7 +16,7 @@ class checkApi
      */
     public function handle(Request $request, Closure $next)
     {
-        if ((env('API_URL')  !== null || '') && (env('API_KEY') !== null || ''))
+        if ((config('api.baseUrl')  !== null || '') && (config('api.apiKey') !== null || ''))
             return $next($request);
 
         return response()->json('Hmm, sorry missing API_URL or API_KEY');
