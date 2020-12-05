@@ -17,6 +17,9 @@ Route::prefix('quikmovie')->middleware(['checkApi'])->group(function () {
     Route::prefix('trending')->namespace('Trending')->group(function () {
         Route::get('{media_type}/{time_window}',   'TrendingController@getTrending');
     });
+    Route::prefix('genre')->namespace('Genre')->group(function () {
+        Route::get('movie',   'GenreController@getGenreList');
+    });
 });
 
 Route::fallback(function () {

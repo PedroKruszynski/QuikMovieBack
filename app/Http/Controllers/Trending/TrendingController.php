@@ -25,7 +25,7 @@ class TrendingController extends Controller
     public function getTrending(Request $request)
     {
         return response()->json(
-            $this->tredingService->getTrending($request->media_type, $request->time_window)
+            $this->tredingService->getTrending($request->media_type, $request->time_window, $request->query())
         );
     }
 
