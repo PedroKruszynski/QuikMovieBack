@@ -56,6 +56,51 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "fresh": [
+            "@php artisan migrate:fresh"
+        ],
+        "migrate": [
+            "@php artisan migrate"
+        ],
+        "seed": [
+            "@php artisan db:seed"
+        ],
+        "migrate-seed": [
+            "@php artisan migrate:fresh --seed"
+        ],
+        "migrate-fresh": [
+            "@php artisan migrate:fresh"
+        ],
+        "server": [
+            "@php artisan serve"
+        ],
+        "rollback": [
+            "@php artisan migrate:rollback"
+        ],
+        "make:controller": [
+            "@php artisan make:controller"
+        ],
+        "make:migration": [
+            "@php artisan make:migration"
+        ],
+        "make:middleware": [
+            "@php artisan make:middleware"
+        ],
+        "make:seed": [
+            "@php artisan make:seeder"
+        ],
+        "key": [
+            "@php artisan key:generate"
+        ],
+        "test": [
+            "vendor/bin/phpunit"
+        ],
+        "make:test": [
+            "@php artisan make:test"
+        ],
+        "make:test-unit": [
+            "@php artisan make:test --unit"
         ]
     }
 }

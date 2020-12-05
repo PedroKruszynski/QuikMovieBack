@@ -13,7 +13,13 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('quikmovie')->middleware(['checkApi'])->group(function () {
+    Route::prefix('trending')->namespace('Trending')->group(function () {
+        Route::get('{media_type}/{time_window}',   'TrendingController@getTrending');
+    });
 });
+
+Route::fallback(function () {
+    return response()->json("Hmm, sorry I don't understand that route");
+});
+
