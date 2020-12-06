@@ -6,15 +6,21 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Services\Trending\TrendingService;
+use App\Services\Genre\GenreService;
 
 class TrendingController extends Controller
 {
 
     private $tredingService;
+    private $genreService;
 
-    public function __construct(TrendingService $tredingService)
+    public function __construct(
+                                TrendingService $tredingService,
+                                GenreService $genreService
+                                )
     {
         $this->tredingService = $tredingService;
+        $this->genreService   = $genreService;
     }
 
     /**
@@ -24,9 +30,16 @@ class TrendingController extends Controller
      */
     public function getTrending(Request $request)
     {
+
+        $movies = $this->tredingService->getTrending($request->media_type, $request->time_window, $request->query());
+        $genres = $this->genreService->getGenreMovieList($request->query());
+
+        $movies->results = $this->genreService->makeGenreString($movies->results, $genres->genres);
+
         return response()->json(
-            $this->tredingService->getTrending($request->media_type, $request->time_window, $request->query())
+            $movies
         );
+
     }
 
 }

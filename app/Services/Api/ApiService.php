@@ -10,7 +10,7 @@ class ApiService
     protected $language;
 
     protected $page    = 1;
-    protected $sort_by = 'popularity.asc';
+    protected $sort_by = 'original_title.asc';
 
     public function __construct()
     {

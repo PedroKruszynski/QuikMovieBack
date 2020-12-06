@@ -27,4 +27,16 @@ class MovieService extends ApiService implements MovieInterface
             );
         }
     }
+
+    public function orderMoviesByName($movies)
+    {
+        $newMovies = $movies;
+
+        uasort($newMovies, function($first, $second) {
+            return $first->title > $second->title;
+        });
+
+        return [...$newMovies];
+    }
+
 }
