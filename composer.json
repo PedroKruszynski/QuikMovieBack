@@ -94,7 +94,7 @@
             "@php artisan key:generate"
         ],
         "test": [
-            "vendor/bin/phpunit"
+            "./vendor/bin/phpunit"
         ],
         "make:test": [
             "@php artisan make:test"

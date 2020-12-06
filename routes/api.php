@@ -32,6 +32,6 @@ Route::prefix('quikmovie')->middleware(['checkApi'])->group(function () {
 });
 
 Route::fallback(function () {
-    return response()->json("Hmm, sorry I don't understand that route");
+    return response()->json("Hmm, sorry I don't understand that route", 404);
 });
 

@@ -19,6 +19,6 @@ class checkApi
         if ((config('api.baseUrl')  !== null || '') && (config('api.apiKey') !== null || ''))
             return $next($request);
 
-        return response()->json('Hmm, sorry missing API_URL or API_KEY');
+        return response()->json('Hmm, sorry missing API_URL or API_KEY', 500);
     }
 }
