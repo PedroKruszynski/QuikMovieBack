@@ -35,14 +35,27 @@ class SearchController extends Controller
     public function getSearchMovie(Request $request)
     {
 
-        $movies = $this->searchService->getSearchMovie($request->query());
-        $genres = $this->genreService->getGenreMovieList($request->query());
+        try {
 
-        $movies->results = $this->genreService->makeGenreString($movies->results, $genres->genres);
-        $movies->results = (array) $this->movieService->orderMoviesByName($movies->results);
+            $movies = $this->searchService->getSearchMovie($request->query());
+            $genres = $this->genreService->getGenreMovieList($request->query());
 
-        return response()->json(
-            $movies
-        );
+            $movies->results = $this->genreService->makeGenreString($movies->results, $genres->genres);
+            $movies->results = (array) $this->movieService->orderMoviesByName($movies->results);
+
+            return response()->json(
+                $movies
+            );
+
+        } catch (\Throwable $exception) {
+            return response()->json(
+                $movies,
+                500
+            );
+        }
+
+
+
+
     }
 }
