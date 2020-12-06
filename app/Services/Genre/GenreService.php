@@ -42,7 +42,7 @@ class GenreService extends ApiService implements GenreInterface
 
         foreach ($movies as $key => $movie) {
             $genresArray = array_keys(array_intersect(array_flip($genres), $movie->genre_ids));
-            $movies[$key]->genreList = implode(',', $genresArray);
+            $movies[$key]->genreList = implode(', ', $genresArray);
         }
 
         return $movies;
